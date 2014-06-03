@@ -49,7 +49,7 @@ def lance_thread(arduino):
         print('temperature', temperature)
 
 
-lecture_serial = threading.Thread(target=lance_thread, (arduino, ))
+lecture_serial = threading.Thread(target=lance_thread, args=tuple(arduino))
 lecture_serial.start()
 
 
