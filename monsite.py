@@ -42,9 +42,8 @@ arduino = connect_arduino()
 
 def lance_thread(arduino):
     print('lance_thread')
-    ser = serial.Serial('/dev/ttyACM0', 9600)
     while True:
-        temperature = ser.readline().strip()
+        temperature = arduino.readline().strip()
         senseurs['temperature'] = temperature
         print('temperature', temperature)
 
