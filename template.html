@@ -1,0 +1,75 @@
+<html>
+    <head>
+	<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+        <link rel="stylesheet" href="/bootstrap.min.css">
+        <link rel="stylesheet" href="/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <section style="text-align: center;">
+            <h1>Relais Chambre Sacha</h1>
+            <p>                     
+                Ci-dessous pour allumer-éteindre.
+            </p>
+                                                                          
+            <button onclick="$.ajax('/api/relay1/on')" class="btn btn-large btn-info">      
+                Allumer                                                                             
+            </button>                                                                                               
+	    <button onclick="$.ajax('/api/relay1/off')" class="btn btn-large btn-warning">      
+                Eteindre
+            </button>	
+
+            <br><b id='relay_button1'> Chargement... </b>
+
+
+            <h1>Relais Bureau Sacha</h1>
+            <p>
+                Ci-dessous pour allumer-éteindre.
+            </p>
+
+            <button onclick="$.ajax('/api/relay2/on')" class="btn btn-large btn-info">
+                Allumer
+            </button>
+            <button onclick="$.ajax('/api/relay2/off')" class="btn btn-large btn-warning">
+                Eteindre
+            </button>
+            <br><b id='relay_button'> Chargement...</b>
+
+            <h1><u>NE PAS TOUCHER !!! En cours de dev ! Merci :-)</u></h1>
+            <h1>Rideaux</h1>
+            <p>
+            Ouvrir / Fermer
+            </p>
+            
+            <button onclick="$.ajax('/api/rideaux/ouvrir')" class="btn btn-large btn-success">
+                Ouvrir
+            </button>
+            <button onclick="$.ajax('/api/rideaux/stop')" class="btn btn-large btn-warning">
+                Stop
+            </button>
+            <button onclick="$.ajax('/api/rideaux/fermer')" class="btn btn-large btn-success">
+                Fermer
+            </button>
+            <br><b id='rideaux'> Chargement... </b>
+            <h1><u>----------------------------------------------------</u></h1>
+
+            
+            </br></br></br>
+            Température de la chambre :
+            <b id='temp'> xxxxx </b><p degres</p>
+            Température du Raspberry Pi :
+            <b id='temp2'> xxxxx </b><b degres</b>
+                
+                <h3><u>Problèmes à résoudres: </u></h3>
+                
+                • Température avec Arduino bloque le site </br>
+                • L'ouverture et fermeture des rideaux bloquent le site </br>
+                • Design </br>
+                • Afficher état ouverture rideaux</br>
+                
+        </section>
+        <script src="/jquery-2.1.0.min.js"></script>
+        <script src="/bootstrap.min.js"></script>
+        <script src="/script.js"></script>                                                                                                  
+     </body>                                                                                                                                                                     
+
+</html>
