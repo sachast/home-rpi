@@ -27,11 +27,11 @@ senseurs = {}
 
 
 def connect_arduino():
-    for path in ('/dev/ttyUSB0',
-                 '/dev/ttyUSB1',
+    for path in ('/dev/ttyACM0',
+                 '/dev/ttyACM1',
                  '/dev/tty.usbserial-A8008KAi'):
         try:
-            return serial.Serial(path, 115200)
+            return serial.Serial(path, 9600)
         except serial.serialutil.SerialException:
             pass # Only accept that exception class
     raise serial.serialutil.SerialException(
