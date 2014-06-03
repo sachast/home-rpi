@@ -26,14 +26,30 @@ app = Bottle()
 senseurs = {}
 
 
-def lance_thread():
+def connect_arduino():
+    for path in ('/dev/ttyUSB0',
+                 '/dev/ttyUSB1',
+                 '/dev/tty.usbserial-A8008KAi'):
+        try:
+            return serial.Serial(path, 115200)
+        except serial.serialutil.SerialException:
+            pass # Only accept that exception class
+    raise serial.serialutil.SerialException(
+        "could not open any predefined port")
+
+global arduino
+arduino = connect_arduino()
+
+def lance_thread(arduino):
+    print('lance_thread')
     ser = serial.Serial('/dev/ttyACM0', 9600)
     while True:
         temperature = ser.readline().strip()
         senseurs['temperature'] = temperature
+        print('temperature', temperature)
 
 
-lecture_serial = threading.Thread(target=lance_thread)
+lecture_serial = threading.Thread(target=lance_thread, (arduino, ))
 lecture_serial.start()
 
 
